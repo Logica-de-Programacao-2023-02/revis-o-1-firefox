@@ -12,6 +12,26 @@ package q3
 //
 //Se M ou N forem iguais ou menores que 0, a função deve retornar um erro.
 
+import "errors"
+
 func DominoPieces(m, n int) (int, error) {
-	return 0, nil
+	if m <= 0 || n <= 0 {
+		return 0, errors.New("M e N devem ser maiores que 0")
+	}
+
+	maxPieces := (m * n) / 2
+
+	return maxPieces, nil
+}
+
+func main() {
+	m, n := 3, 4
+	result, err := DominoPieces(m, n)
+
+	if err != nil {
+		println("Erro:", err)
+		return
+	}
+
+	println("Número máximo de peças de dominó:", result)
 }

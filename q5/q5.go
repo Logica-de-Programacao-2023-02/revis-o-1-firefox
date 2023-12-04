@@ -14,6 +14,28 @@ package q5
 //
 //Ajude Pedro a lidar com esta tarefa fácil.
 
+package main
+
+import (
+	"strings"
+)
+
 func ProcessString(s string) string {
-	return ""
+	var result strings.Builder
+
+	for _, char := range s {
+		if strings.Contains("BCDFGHJKLMNPQRSTVWXYZ", strings.ToUpper(string(char))) {
+			result.WriteString(strings.ToLower(string(char)))
+		}
+
+		if strings.Contains("BCDFGHJKLMNPQRSTVWXYZ", strings.ToUpper(string(char))) {
+			result.WriteString(".")
+		}
+
+		if !strings.Contains("AEIOUaeiou", string(char)) {
+			result.WriteString(string(char))
+		}
+	}
+
+	return result.String()
 }
